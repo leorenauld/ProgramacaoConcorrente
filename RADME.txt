@@ -1,0 +1,5 @@
+gcc criaBin.c -o bin -lm
+./bin "número de inteiros a ser testados"
+
+gcc progConc6.c -o trab -lm
+./trab "número de consumidores" "tamanho do buffer" numeros.bin
