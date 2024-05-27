@@ -27,9 +27,9 @@ void Insere(int item) {
     sem_wait(&mutexGeral); // exclusão mútua entre produtores (aqui geral para log)
     Buffer[in] = item;
     in = (in + 1) % M;
-    for (int i = 0; i < M; i++)
-        printf("%d ", Buffer[i]);
-    puts("");
+    // for (int i = 0; i < M; i++)
+    //    printf("%d ", Buffer[i]);
+    // puts("");
     sem_post(&mutexGeral);
     sem_post(&slotCheio); // sinaliza um slot cheio
 }
@@ -43,10 +43,10 @@ int Retira(int id) {
     item = Buffer[out];
     Buffer[out] = 0;
     out = (out + 1) % M;
-    printf("Cons[%d]: retirou %d\n", id, item);
-    for (int i = 0; i < M; i++)
-        printf("%d ", Buffer[i]);
-    puts("");
+    // printf("Cons[%d]: retirou %d\n", id, item);
+    // for (int i = 0; i < M; i++)
+    //    printf("%d ", Buffer[i]);
+    // puts("");
     sem_post(&mutexGeral);
     sem_post(&slotVazio); // sinaliza um slot vazio
     return item;
